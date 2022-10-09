@@ -19,7 +19,10 @@ const onClickSuit = () => {
   const cancel = document.createElement("button");
   cancel.innerText = "キャンセル";
   cancel.addEventListener("click", () => {
-    alert("キャンセル");
+    const cancelButton = cancel.parentNode;
+    document
+      .getElementById("just-cleaning-suit-list")
+      .removeChild(cancelButton);
   });
 
   div.appendChild(li);
@@ -47,7 +50,10 @@ const onClickFuton = () => {
   const cancel = document.createElement("button");
   cancel.innerText = "キャンセル";
   cancel.addEventListener("click", () => {
-    alert("キャンセル");
+    const cancelButton = cancel.parentNode;
+    document
+      .getElementById("just-cleaning-futon-list")
+      .removeChild(cancelButton);
   });
 
   div.appendChild(li);
@@ -75,7 +81,10 @@ const onClickElse = () => {
   const cancel = document.createElement("button");
   cancel.innerText = "キャンセル";
   cancel.addEventListener("click", () => {
-    alert("キャンセル");
+    const cancelButton = cancel.parentNode;
+    document
+      .getElementById("just-cleaning-else-list")
+      .removeChild(cancelButton);
   });
 
   div.appendChild(li);
