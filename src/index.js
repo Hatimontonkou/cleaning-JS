@@ -12,7 +12,7 @@ const onClickSuit = () => {
   const doneButton = document.createElement("button");
   doneButton.innerText = "クリーニング済み";
   doneButton.addEventListener("click", () => {
-    cancelFromSuitarea(cancel.parentNode);
+    deletFromSuitarea(cancel.parentNode);
 
     const cleaningTarget = doneButton.parentNode;
     const text = cleaningTarget.firstElementChild.innerText;
@@ -23,6 +23,10 @@ const onClickSuit = () => {
 
     const finishButton = document.createElement("button");
     finishButton.innerText = "受け取り完了";
+    finishButton.addEventListener("click", () => {
+      const deletetarget = finishButton.parentNode;
+      document.getElementById("just-finish-area").removeChild(deletetarget);
+    });
 
     cleaningTarget.appendChild(li);
     cleaningTarget.appendChild(finishButton);
@@ -32,10 +36,10 @@ const onClickSuit = () => {
   const cancel = document.createElement("button");
   cancel.innerText = "キャンセル";
   cancel.addEventListener("click", () => {
-    cancelFromSuitarea(cancel.parentNode);
+    deletFromSuitarea(cancel.parentNode);
   });
 
-  const cancelFromSuitarea = (target) => {
+  const deletFromSuitarea = (target) => {
     document.getElementById("just-cleaning-suit-list").removeChild(target);
   };
 
@@ -58,17 +62,36 @@ const onClickFuton = () => {
   const doneButton = document.createElement("button");
   doneButton.innerText = "クリーニング済み";
   doneButton.addEventListener("click", () => {
-    alert("クリーニング済み");
+    deletFromFutonarea(doneButton.parentNode);
+
+    const cleaningTarget = doneButton.parentNode;
+    const text = cleaningTarget.firstElementChild.innerText;
+    cleaningTarget.textContent = null;
+
+    const li = document.createElement("li");
+    li.innerText = text;
+
+    const finishButton = document.createElement("button");
+    finishButton.innerText = "受け取り完了";
+    finishButton.addEventListener("click", () => {
+      const deletetarget = finishButton.parentNode;
+      document.getElementById("just-finish-area").removeChild(deletetarget);
+    });
+
+    cleaningTarget.appendChild(li);
+    cleaningTarget.appendChild(finishButton);
+    document.getElementById("just-finish-area").appendChild(cleaningTarget);
   });
 
   const cancel = document.createElement("button");
   cancel.innerText = "キャンセル";
   cancel.addEventListener("click", () => {
-    const cancelButton = cancel.parentNode;
-    document
-      .getElementById("just-cleaning-futon-list")
-      .removeChild(cancelButton);
+    deletFromFutonarea(cancel.parentNode);
   });
+
+  const deletFromFutonarea = (target) => {
+    document.getElementById("just-cleaning-futon-list").removeChild(target);
+  };
 
   div.appendChild(li);
   div.appendChild(doneButton);
@@ -89,18 +112,36 @@ const onClickElse = () => {
   const doneButton = document.createElement("button");
   doneButton.innerText = "クリーニング済み";
   doneButton.addEventListener("click", () => {
-    alert("クリーニング済み");
+    deletFromElsearea(doneButton.parentNode);
+
+    const cleaningTarget = doneButton.parentNode;
+    const text = cleaningTarget.firstElementChild.innerText;
+    cleaningTarget.textContent = null;
+
+    const li = document.createElement("li");
+    li.innerText = text;
+
+    const finishButton = document.createElement("button");
+    finishButton.innerText = "受け取り完了";
+    finishButton.addEventListener("click", () => {
+      const deletetarget = finishButton.parentNode;
+      document.getElementById("just-finish-area").removeChild(deletetarget);
+    });
+
+    cleaningTarget.appendChild(li);
+    cleaningTarget.appendChild(finishButton);
+    document.getElementById("just-finish-area").appendChild(cleaningTarget);
   });
 
   const cancel = document.createElement("button");
   cancel.innerText = "キャンセル";
   cancel.addEventListener("click", () => {
-    const cancelButton = cancel.parentNode;
-    document
-      .getElementById("just-cleaning-else-list")
-      .removeChild(cancelButton);
+    deletFromElsearea(cancel.parentNode);
   });
 
+  const deletFromElsearea = (target) => {
+    document.getElementById("just-cleaning-else-list").removeChild(target);
+  };
   div.appendChild(li);
   div.appendChild(doneButton);
   div.appendChild(cancel);
