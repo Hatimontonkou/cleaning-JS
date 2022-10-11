@@ -6,24 +6,38 @@ const onClickSuit = () => {
 
   const div = document.createElement("div");
   div.className = "list-row";
-
   const li = document.createElement("li");
   li.innerText = inputText;
 
   const doneButton = document.createElement("button");
   doneButton.innerText = "クリーニング済み";
   doneButton.addEventListener("click", () => {
-    alert("クリーニング済み");
+    cancelFromSuitarea(cancel.parentNode);
+
+    const cleaningTarget = doneButton.parentNode;
+    const text = cleaningTarget.firstElementChild.innerText;
+    cleaningTarget.textContent = null;
+
+    const li = document.createElement("li");
+    li.innerText = text;
+
+    const finishButton = document.createElement("button");
+    finishButton.innerText = "受け取り完了";
+
+    cleaningTarget.appendChild(li);
+    cleaningTarget.appendChild(finishButton);
+    document.getElementById("just-finish-area").appendChild(cleaningTarget);
   });
 
   const cancel = document.createElement("button");
   cancel.innerText = "キャンセル";
   cancel.addEventListener("click", () => {
-    const cancelButton = cancel.parentNode;
-    document
-      .getElementById("just-cleaning-suit-list")
-      .removeChild(cancelButton);
+    cancelFromSuitarea(cancel.parentNode);
   });
+
+  const cancelFromSuitarea = (target) => {
+    document.getElementById("just-cleaning-suit-list").removeChild(target);
+  };
 
   div.appendChild(li);
   div.appendChild(doneButton);
